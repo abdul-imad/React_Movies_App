@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import GenreList from "./GenreList";
 import Pagination from "./Pagination";
 
@@ -110,6 +111,7 @@ export default class MoviesPage extends Component {
 
 				{/* movies */}
 				<div className="col-lg-9">
+                    <button className="btn btn-primary"><Link className="text-light" to="/new">New</Link></button>
 					<input
 						type="search"
 						placeholder="Search any movie"

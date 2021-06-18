@@ -8,7 +8,7 @@ export default class Pagination extends Component {
 		}
 		return (
 			<nav aria-label="...">
-				<ul className="pagination pagination-lg">
+				<ul className="pagination">
 					{pagesArr.map((eachPage) => {
 						return eachPage === pageNum ? (
 							<li
