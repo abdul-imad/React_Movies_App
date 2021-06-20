@@ -5,21 +5,11 @@ import Pagination from "./Pagination";
 
 export default class MoviesPage extends Component {
 	state = {
-		movies: [],
 		genres: [{ _id: 123456, name: "All Genres" }],
 		currSearchText: "",
 		pageNum: 1,
 		limit: 4,
 		currGenre: "All Genres",
-	};
-
-	deleteMovie = (id) => {
-		let currentMovieArr = this.state.movies.filter((movieObj) => {
-			return movieObj._id !== id;
-		});
-		this.setState({
-			movies: currentMovieArr,
-		});
 	};
 
 	searchMovie = (e) => {
@@ -60,18 +50,11 @@ export default class MoviesPage extends Component {
 		this.setState({
 			genres: [...this.state.genres, ...backEndGenres.genres],
 		});
-
-		// backend call for movies
-		let resp = await fetch("https://react-backend101.herokuapp.com/movies");
-		let backEndMovies = await resp.json();
-		this.setState({
-			movies: backEndMovies.movies,
-		});
 	}
 
 	render() {
-		let { movies, genres, currGenre, currSearchText, pageNum, limit } =
-			this.state;
+		let { genres, currGenre, currSearchText, pageNum, limit } = this.state;
+		let { movies, deleteMovie } = this.props;
 		// filtering movies based on search
 		let filteredArr = movies.filter((movieObj) => {
 			let title = movieObj.title.trim().toLowerCase();
@@ -98,7 +81,7 @@ export default class MoviesPage extends Component {
 			<div className="row">
 				{/* Genres */}
 				<div className="col-lg-2">
-                    {/* genre Component */}
+					{/* genre Component */}
 					<GenreList
 						genres={genres}
 						sortByGenre={this.sortByGenre}
@@ -111,7 +94,9 @@ export default class MoviesPage extends Component {
 
 				{/* movies */}
 				<div className="col-lg-9">
-                    <button className="btn btn-primary"><Link className="text-light" to="/new">New</Link></button>
+					<Link className="text-light" to="/new">
+						<button className="btn btn-primary">New</button>
+					</Link>
 					<input
 						type="search"
 						placeholder="Search any movie"
@@ -150,7 +135,7 @@ export default class MoviesPage extends Component {
 											<button
 												type="button"
 												className="btn btn-danger"
-												onClick={() => this.deleteMovie(movieObj._id)}
+												onClick={() => deleteMovie(movieObj._id)}
 											>
 												Delete{" "}
 											</button>
@@ -161,7 +146,7 @@ export default class MoviesPage extends Component {
 						</tbody>
 					</table>
 					{/* pagination Component */}
-                    <Pagination
+					<Pagination
 						totalPages={totalPages}
 						changeActivePageBtn={this.changeActivePageBtn}
 						pageNum={pageNum}
@@ -171,4 +156,3 @@ export default class MoviesPage extends Component {
 		);
 	}
 }
-
