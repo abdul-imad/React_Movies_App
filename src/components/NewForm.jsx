@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
 export default class NewForm extends Component {
 	state = {
 		data: {
@@ -28,43 +29,57 @@ export default class NewForm extends Component {
 		let { title, genre, stock, rate } = this.state;
 		return (
 			<form onSubmit={this.handleSubmit}>
-                <div class="mb-3">
-				<label class="form-label">
-					Title:
-					<input
-						type="text"
-						class="form-control"
-						id="title"
-						value={title}
-						onChange={this.handleChange}
-					/>
-				</label></div>
-				<label>
-					Genre:
-					<select id="genre" value={genre} onChange={this.handleChange}>
-						<option value="Action">Action</option>
-						<option value="Thriller">Thriller</option>
-						<option value="Comedy">Comedy</option>
-					</select>
-				</label>
-				<label>
-					Stock:
-					<input
-						type="number"
-						id="stock"
-						value={stock}
-						onChange={this.handleChange}
-					/>
-				</label>
-				<label>
-					Rate:
-					<input
-						type="number"
-						id="rate"
-						value={rate}
-						onChange={this.handleChange}
-					/>
-				</label>
+				<div class="mb-3">
+					<label class="form-label">
+						Title:
+						<input
+							type="text"
+							class="form-control"
+							id="title"
+							value={title}
+							onChange={this.handleChange}
+						/>
+					</label>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">
+						Genre:
+						<select
+							class="form-control"
+							id="genre"
+							value={genre}
+							onChange={this.handleChange}
+						>
+							<option value="Action">Action</option>
+							<option value="Thriller">Thriller</option>
+							<option value="Comedy">Comedy</option>
+						</select>
+					</label>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">
+						Stock:
+						<input
+							type="number"
+							id="stock"
+							class="form-control"
+							value={stock}
+							onChange={this.handleChange}
+						/>
+					</label>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">
+						Rate:
+						<input
+							type="number"
+							id="rate"
+							class="form-control"
+							value={rate}
+							onChange={this.handleChange}
+						/>
+					</label>
+				</div>
 				<input type="submit" value="Submit" />
 			</form>
 		);
