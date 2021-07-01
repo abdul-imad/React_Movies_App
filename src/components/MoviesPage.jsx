@@ -128,7 +128,7 @@ export default class MoviesPage extends Component {
 									<tr key={movieObj._id}>
 										<td></td>
 										<td>{movieObj.title}</td>
-										<td>{movieObj.genre.name.trim()}</td>
+										<td>{movieObj.genre.name}</td>
 										<td>{movieObj.numberInStock}</td>
 										<td>{movieObj.dailyRentalRate}</td>
 										<td>

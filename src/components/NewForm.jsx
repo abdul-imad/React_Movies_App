@@ -23,6 +23,7 @@ export default class NewForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.props.addMovie(this.state.data);
+        alert("Movie added Successfully")
 	};
 
 	render() {
